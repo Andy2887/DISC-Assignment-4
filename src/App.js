@@ -27,11 +27,31 @@ function Title(){
 function ProfileCard(props){
   return(
     <div class = "profile">
-        <div class="text">
-          <p>{props.name}</p>
-          <hr />
-          <p>{props.description}</p>
-        </div>
+      <img src={`/images/${props.avatar}.png`} alt="Profile" />
+      <div class="text">
+        <p>{props.name}</p>
+        <hr />
+        <p>{props.description}</p>
+      </div>
+    </div>
+  );
+}
+
+// root definition
+function Root(){
+  return(
+    <div class = "footer">
+      <div>
+        <h2>Discover & Innovate for Social Change</h2>
+        <img src= "/images/Facebook Icon.png" alt = "Facebook Image Logo"/>
+        <img src= "/images/Github Icon.png" alt = "Facebook Image Logo"/>
+        <img src= "/images/Instagram Icon.png" alt = "Facebook Image Logo"/>
+      </div>
+    
+      <a>Legal Stuff</a>
+      <a>Privacy Policy</a>
+      <a>Security</a>
+      <a>Website Accessibility</a>
     </div>
   );
 }
@@ -44,9 +64,10 @@ function App() {
   <div>
     <Nav />
     <Title />
-    <ProfileCard name = "John Doe" description = "I am a student at UBC" />
-    <ProfileCard name = "Jane Cruise" description = "I am a student at SFU" />
-    <ProfileCard name = "Jack Smith" description = "I am a student at BCIT" />
+    <ProfileCard name = "Justin Bieber" description = "Baby Baby Baby Oh" avatar = "avatar_1"/>
+    <ProfileCard name = "Darth Vadar" description = "I want you to know the power of the dark side" avatar="avatar_2"/>
+    <ProfileCard name = "Bruce Wayne" description = "You wanna know my secret identity?" avatar="avatar_3"/>
+    <Root />
   </div>
   );
 }
