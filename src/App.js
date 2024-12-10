@@ -61,12 +61,14 @@ function Root(){
 // the main function
 function App() {
   return (
-  <div>
+  <div class = "body">
     <Nav />
     <Title />
-    <ProfileCard name = "Justin Bieber" description = "Baby Baby Baby Oh" avatar = "avatar_1"/>
-    <ProfileCard name = "Darth Vadar" description = "I want you to know the power of the dark side" avatar="avatar_2"/>
-    <ProfileCard name = "Bruce Wayne" description = "You wanna know my secret identity?" avatar="avatar_3"/>
+    <div class = "profile_list">
+      <ProfileCard name = "Justin Bieber" description = "Baby Baby Baby Oh" avatar = "avatar_1"/>
+      <ProfileCard name = "Darth Vadar" description = "I want you to know the power of the dark side" avatar="avatar_2"/>
+      <ProfileCard name = "Bruce Wayne" description = "You wanna know my secret identity?" avatar="avatar_3"/>
+    </div>
     <Root />
   </div>
   );
