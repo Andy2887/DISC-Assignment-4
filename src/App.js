@@ -25,8 +25,18 @@ function Title(){
 
 // profile card definition
 function ProfileCard(props){
+  const [select, setSelect] = useState(false);
+
+  const handleSelect = () => {
+    setSelect(!select);
+  }
+
+  useEffect(() => {
+    console.log("Color changed");
+  }, [select]);
+
   return(
-    <div class = "profile">
+    <div class = "profile" onClick={handleSelect} style={{ borderColor: select ? 'red' : 'transparent' }}>
       <img src={`/images/${props.avatar}.png`} alt="Profile" />
       <div class="text">
         <p>{props.name}</p>
@@ -35,6 +45,8 @@ function ProfileCard(props){
       </div>
     </div>
   );
+
+  
 }
 
 // root definition
