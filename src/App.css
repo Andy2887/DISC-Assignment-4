@@ -22,12 +22,7 @@
   text-decoration: none;
 }
 
-.title{
-  color: #392AB8;
-  opacity: 0.8;
-  display: flex;
-  justify-content: center;
-}
+
 
 .profile{
   font-family: sans-serif;
@@ -54,11 +49,12 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px;
-  position: fixed;
+  padding: 40px;
+  position: relative;
   bottom: 0;
   width: 100%;
   box-sizing: border-box;
+  margin-top: 50px;
 }
 
 .footer h2{
