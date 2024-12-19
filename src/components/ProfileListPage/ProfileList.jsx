@@ -1,17 +1,18 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useMemo } from 'react';
+import { useNavigate } from 'react-router-dom';
+import { Title } from '../common/UIComponents';
 import React from 'react';
 
 // profile card definition
 function ProfileCard(props){
     const [select, setSelect] = useState(false);
-  
+    const navigate = useNavigate();
+
     const handleSelect = () => {
       setSelect(!select);
+      navigate(`/profiles/${props.id}`);
     }
   
-    useEffect(() => {
-      console.log("Color changed");
-    }, [select]);
   
     return(
       <div class = "profile" onClick={handleSelect} style={{ borderColor: select ? 'red' : 'transparent' }}>
@@ -26,14 +27,6 @@ function ProfileCard(props){
   
 }
 
-// title bar definition
-function Title(){
-    return(
-        <div style={{ color: '#392AB8', opacity: 0.8, display: 'flex', justifyContent: 'center' }}>
-            <h1>Find Your Friends!</h1>
-        </div>
-    );
-}
 
 
 export default function ProfileList() {
@@ -48,15 +41,18 @@ export default function ProfileList() {
       fetchProfiles();  
     }, [profiles]);
 
+    const ProfileCards = useMemo(() => {
+      return profiles.map((profile) => {
+        return <ProfileCard key = {profile.id} id={profile.id} name={profile.firstName} description={profile.university} image={profile.image} />
+      });
+    }, [profiles]);
+
 
     return(
       <div class = "body">
-          <Title />
+          <Title CN = "ProfileList-title" content = "Find Your Friends!"/>
           <div class = "profile_list">
-            {profiles.map((profile) => (
-              <ProfileCard name={profile.firstName} image={profile.image} description={profile.email} />
-                  
-            ))}
+            {ProfileCards}
           </div>
       </div>
     );

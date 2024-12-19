@@ -1,5 +1,6 @@
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
+import { Title } from '../common/UIComponents';
 
 function Button() {
   const navigate = useNavigate();
@@ -9,7 +10,7 @@ function Button() {
   };
 
   return (
-    <button style={{ backgroundColor: '#392AB8', color: 'white' }} onClick={handleClick}>
+    <button className="get-started-btn" onClick={handleClick}>
       <h2>Get Started</h2>
     </button>
   );
@@ -18,10 +19,13 @@ function Button() {
 
 export default function Home() {
   return (
-    <div>
-      <h1>Welcome to WeConnect!</h1>
-      <h2>The largest friend match-making platform at Northwestern</h2>
-      <Button />
+    <div className="home-container">
+      <div className="home-content">
+        <Title CN="welcome-title" content = "Welcome to WeConnect!"/>
+        <Title CN="welcome-subtitle" content = "The largest friend match-making platform at Northwestern"/>
+        <Button />
+      </div>
+      <img src="/images/Friends Pic.jpg" alt="Friends" className="friends-image"/>
     </div>
   )
 }

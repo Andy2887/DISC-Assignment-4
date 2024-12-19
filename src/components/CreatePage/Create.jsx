@@ -1,37 +1,18 @@
 import React from 'react';
+import { Title, FormInput } from '../common/UIComponents';
 
-function Title(){
-    return(
-        <div style={{ color: '#392AB8', opacity: 0.8, display: 'flex', justifyContent: 'center' }}>
-            <h1>Create Your Profile!</h1>
-        </div>
-    );
-}
 
 export default function Create() {
     return(
-        <div>
-            <Title />
+        <div className="create-container">
+            <Title content = "Create Your Profile!" CN = "create-title"/>
             <form>
-                <div>
-                    <label for="name">Name:</label>
-                    <input type="text" id="name" name="name" required/>
-                </div>
-                <div>
-                    <label for="Year">Year:</label>
-                    <input type="text" id="year" name="year" required/>
-                </div>
-                <div>
-                    <label for="Hobbies">Hobbies:</label>
-                    <input type="text" id="Hobbies" name="Hobbies" required/>
-                </div>
-                <div>
-                    <label for="FunFact">What is the one thing you want others to know:</label>
-                    <input type="text" id="FunFact" name="FunFact" required/>
-                </div>
-                <button type="submit">Submit</button>
+                <FormInput id="Name" />
+                <FormInput id="Year" />
+                <FormInput id="Hobbies" />
+                <FormInput id="FunFact" />
+                <button type="submit" className="submit-btn">Create Profile</button>
             </form>
         </div>
     );
-
 }
