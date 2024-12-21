@@ -12,7 +12,7 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchProfile = async () => {
-            const response = await fetch(`https://dummyjson.com/users/${profileID}`);
+            const response = await fetch(`http://localhost:3001/users/${profileID}`, {method: 'GET'});
             const data = await response.json();
             setProfile(data);
         }
@@ -21,9 +21,11 @@ export default function Profile() {
 
     const profileContent = useMemo(() => {
         return profile ? (
-            <div key={profile.id} className="profile">
-                <h1>{profile.firstName} {profile.lastName}</h1>
-                <img src= {profile.image} alt="Profile"/>
+            <div className="profile-card">
+                <h1>{profile.first_name} {profile.last_name}</h1>
+                <hr />
+                <p>Hobby: {profile.hobby}</p>
+                <p>Email: {profile.email}</p>
             </div>
         ) : (
             <div>Loading...</div>
@@ -31,9 +33,11 @@ export default function Profile() {
     }, [profile]);
 
     return(
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div className="profile-container">
             {profileContent}
-            <button onClick={() => navigate('/')}>Return</button>
+            <button className="return-btn" onClick={() => navigate('/profiles')}>
+                Return to Profiles
+            </button>
         </div>
     );
 }

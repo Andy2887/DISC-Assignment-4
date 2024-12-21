@@ -16,11 +16,10 @@ function ProfileCard(props){
   
     return(
       <div class = "profile" onClick={handleSelect} style={{ borderColor: select ? 'red' : 'transparent' }}>
-        <img src= {props.image} alt="Profile" />
         <div class="text">
-          <p>{props.name}</p>
+          <p>{props.first_name} {props.last_name}</p>
           <hr />
-          <p>{props.description}</p>
+          <p>{props.hobby}</p>
         </div>
       </div>
     );
@@ -28,22 +27,22 @@ function ProfileCard(props){
 }
 
 
-
 export default function ProfileList() {
     const [profiles, setProfiles] = useState([]);
 
+    const getProfiles = async () =>{
+      const response = await fetch('http://localhost:3001/users', {method: 'GET'});
+      const data = await response.json();
+      setProfiles(data);
+    }
+
     useEffect(() => {
-      const fetchProfiles = async () => {
-          const response = await fetch('https://dummyjson.com/users');
-          const data = await response.json();
-          setProfiles(data.users);
-      } 
-      fetchProfiles();  
-    }, [profiles]);
+      getProfiles();
+    }, []);
 
     const ProfileCards = useMemo(() => {
       return profiles.map((profile) => {
-        return <ProfileCard key = {profile.id} id={profile.id} name={profile.firstName} description={profile.university} image={profile.image} />
+        return <ProfileCard key = {profile.id} id={profile.id} first_name={profile.first_name} last_name={profile.last_name} hobby={profile.hobby}/>
       });
     }, [profiles]);
 

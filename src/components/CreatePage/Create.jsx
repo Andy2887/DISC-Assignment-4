@@ -1,5 +1,5 @@
 import React from 'react';
-import { Title, FormInput } from '../common/UIComponents';
+import { Title, FormInput, SelectInput} from '../common/UIComponents';
 
 
 export default function Create() {
@@ -8,7 +8,7 @@ export default function Create() {
             <Title content = "Create Your Profile!" CN = "create-title"/>
             <form>
                 <FormInput id="Name" />
-                <FormInput id="Year" />
+                <SelectInput id = "Year" options = {["Freshman", "Sophomore", "Junior", "Senior", "Graduated"]} />
                 <FormInput id="Hobbies" />
                 <FormInput id="FunFact" />
                 <button type="submit" className="submit-btn">Create Profile</button>
