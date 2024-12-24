@@ -2,6 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
+import { supabase } from '../../config/supabase';
 
 
 export default function Profile() {
@@ -12,8 +13,15 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchProfile = async () => {
-            const response = await fetch(`http://localhost:3001/users/${profileID}`, {method: 'GET'});
-            const data = await response.json();
+            const { data, error } = await supabase
+                .from('users')
+                .select('*')
+                .eq('id', profileID)
+                .single();
+            if (error) {
+                console.error('Error fetching profile:', error);
+                return;
+            }
             setProfile(data);
         }
         fetchProfile();

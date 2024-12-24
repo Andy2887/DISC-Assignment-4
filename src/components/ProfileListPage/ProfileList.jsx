@@ -2,6 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Title } from '../common/UIComponents';
 import React from 'react';
+import { supabase } from '../../config/supabase';
+
 
 // profile card definition
 function ProfileCard(props){
@@ -30,11 +32,17 @@ function ProfileCard(props){
 export default function ProfileList() {
     const [profiles, setProfiles] = useState([]);
 
-    const getProfiles = async () =>{
-      const response = await fetch('http://localhost:3001/users', {method: 'GET'});
-      const data = await response.json();
-      setProfiles(data);
-    }
+    const getProfiles = async () => {
+      const { data, error } = await supabase
+          .from('users')
+          .select('*')
+          
+      if (error) {
+          console.error('Error fetching profiles:', error)
+          return
+      }
+      setProfiles(data)
+  }
 
     useEffect(() => {
       getProfiles();
