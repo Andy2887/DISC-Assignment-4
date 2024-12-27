@@ -1,8 +1,7 @@
 import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Title } from '../common/UIComponents';
-
-const API_URL = 'https://disc-discovery-application-backend.vercel.app';
+import { API_URL } from '../../config';
 
 export default function Login() {
     const [email, setEmail] = useState('');

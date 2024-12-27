@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
 import { Title, FormInput } from '../common/UIComponents';
 import { useNavigate } from 'react-router-dom';
-
-const API_URL = 'https://disc-discovery-application-backend.vercel.app';
+import { API_URL } from '../../config';
 
 export default function Create() {
     const [first_name, setFirstName] = useState('');
@@ -14,8 +13,47 @@ export default function Create() {
     const [error, setError] = useState('');
     const navigate = useNavigate();
 
+    const validateEmail = (email) => {
+        const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return regex.test(email);
+    };
+
+    const validateDate = (date) => {
+        // Check format
+        if (!/^\d{4}-\d{2}-\d{2}$/.test(date)) {
+            return false;
+        }
+
+        // Convert to Date object
+        const [year, month, day] = date.split('-').map(Number);
+        const dateObj = new Date(year, month - 1, day);
+
+        // Check if date is valid and matches input
+        return dateObj && 
+               dateObj.getFullYear() === year &&
+               dateObj.getMonth() === month - 1 &&
+               dateObj.getDate() === day &&
+               year <= new Date().getFullYear(); // Ensure year is not in future
+    };
+
+
+
     const handleCreate = async (e) => {
         e.preventDefault();
+        setError('');
+
+        // Validate email
+        if (!validateEmail(email)) {
+            setError('Please enter a valid email address');
+            return;
+        }
+
+        // Validate date
+        if (!validateDate(date_of_birth)) {
+            setError('Please enter a valid date in format YYYY-MM-DD');
+            return;
+        }
+
         try {
             const response = await fetch(`${API_URL}/api/user-profile/new`, {
                 method: 'POST',

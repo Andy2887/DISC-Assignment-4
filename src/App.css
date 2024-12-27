@@ -17,9 +17,14 @@
   color: grey;
 }
 
-.nav a{
+.nav a {
   color: grey;
   text-decoration: none;
+  cursor: pointer;
+}
+
+.nav a:hover {
+  color: #392AB8;
 }
 
 {/* Welcome Page CSS */}

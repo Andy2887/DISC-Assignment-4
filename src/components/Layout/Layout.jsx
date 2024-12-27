@@ -1,16 +1,35 @@
+import React from 'react';
+
 import { Outlet } from 'react-router-dom';
-import { Link } from 'react-router-dom';
+import { useNavigate, Link } from 'react-router-dom';
 
 // Navigation bar definition
 function Nav(){
+    const navigate = useNavigate();
+    const isAuthenticated = localStorage.getItem('token');
+
+    const handleLogout = () => {
+      localStorage.removeItem('token');
+      navigate('/');
+    }
+
     return(
       <nav className = "nav">
         <h1>DISC</h1>
         <Link to ='/'>Home</Link>
         <Link to ='/about'>About</Link>
-        <Link to ='/create'>Create</Link>
-        <Link to ='/login'>Login</Link>
-        <Link to ='/register'>Register</Link>
+        {isAuthenticated ? (
+          <>
+            <Link to ='/create'>Create</Link>
+            <a onClick={handleLogout} style={{cursor: 'pointer'}}>Logout</a>
+          </>
+
+        ) : (
+          <>
+            <Link to ='/login'>Login</Link>
+            <Link to ='/register'>Register</Link>
+          </>
+        )}
       </nav>
     );
 }

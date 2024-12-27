@@ -1,0 +1,1 @@
+export const API_URL = 'https://disc-discovery-application-backend.vercel.app';

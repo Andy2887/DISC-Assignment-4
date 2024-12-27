@@ -2,9 +2,7 @@ import { useState, useEffect, useMemo } from 'react';
 import { useNavigate } from 'react-router-dom';
 import { Title } from '../common/UIComponents';
 import React from 'react';
-
-
-const API_URL = 'https://disc-discovery-application-backend.vercel.app';
+import { API_URL } from '../../config';
 
 // profile card definition
 function ProfileCard(props){
