@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import { useNavigate, Link } from 'react-router-dom';
 import { Title } from '../common/UIComponents';
 
+const API_URL = 'https://disc-discovery-application-backend.vercel.app';
+
 export default function Register() {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
@@ -17,7 +19,7 @@ export default function Register() {
         }
 
         try {
-            const response = await fetch('http://localhost:3001/api/register', {
+            const response = await fetch(`${API_URL}/api/register`, {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',

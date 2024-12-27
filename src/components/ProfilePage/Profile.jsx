@@ -2,7 +2,8 @@ import { useState, useEffect, useMemo } from 'react';
 import React from 'react';
 import { useNavigate } from 'react-router-dom';
 import { useParams } from 'react-router-dom';
-import { supabase } from '../../config/supabase';
+
+const API_URL = 'https://disc-discovery-application-backend.vercel.app';
 
 
 export default function Profile() {
@@ -13,16 +14,18 @@ export default function Profile() {
 
     useEffect(() => {
         const fetchProfile = async () => {
-            const { data, error } = await supabase
-                .from('users')
-                .select('*')
-                .eq('id', profileID)
-                .single();
-            if (error) {
-                console.error('Error fetching profile:', error);
-                return;
+            try {
+                const response = await fetch (`${API_URL}/api/user-profile/${profileID}`, {method: 'GET'});
+                const data = await response.json();
+
+                if (!response.ok) {
+                    throw new Error(data.error || 'Fetch failed');
+                }
+
+                setProfile(data);
+            } catch (error) {
+                console.error(error);
             }
-            setProfile(data);
         }
         fetchProfile();
     }, [profileID]);
@@ -32,7 +35,7 @@ export default function Profile() {
             <div className="profile-card">
                 <h1>{profile.first_name} {profile.last_name}</h1>
                 <hr />
-                <p>Hobby: {profile.hobby}</p>
+                <p>Bio: {profile.user_profiles.bio}</p>
                 <p>Email: {profile.email}</p>
             </div>
         ) : (

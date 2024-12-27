@@ -1,9 +1,16 @@
 import React from 'react';
 
-export const FormInput = ({id}) => (
+export const FormInput = ({id, value, setFunction}) => (
     <div className="form-group">
         <label htmlFor={id}>{id}:</label>
-        <input type="text" id={id} name={id} required/>
+        <input 
+            type="text" 
+            id={id} 
+            name={id} 
+            value={value} 
+            onChange={(e) => setFunction(e.target.value)} 
+            required
+        />
     </div>
 );
 
