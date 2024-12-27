@@ -27,7 +27,7 @@ export default function Login() {
             }
             
             localStorage.setItem('token', data.token);
-            navigate('/');
+            navigate('/success', { state: { type: 'login' } });
         } catch (error) {
             setError(error.message);
         }

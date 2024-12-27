@@ -21,6 +21,8 @@
   color: grey;
   text-decoration: none;
   cursor: pointer;
+  margin-right: 10px;
+  font-size: 1.2rem;
 }
 
 .nav a:hover {
@@ -152,6 +154,42 @@
   border-radius: 10px;
 }
 
+{/* Success Page CSS */}
+.success-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 80vh;
+  padding: 20px;
+}
+
+.success-card {
+  background-color: white;
+  border-radius: 15px;
+  padding: 40px;
+  width: 100%;
+  max-width: 500px;
+  text-align: center;
+  box-shadow: 0 4px 15px rgba(57, 42, 184, 0.1);
+  animation: fadeIn 0.8s ease-in;
+}
+
+.success-title {
+  color: #392AB8;
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  font-weight: bold;
+}
+
+.success-message {
+  font-size: 1.2rem;
+  color: #444;
+  margin: 20px 0 30px;
+  line-height: 1.5;
+  font-family: 'Helvetica Neue', sans-serif;
+}
+
 {/* Profile Page CSS */}
 .profile {
   display: flex;
@@ -167,6 +205,15 @@
   transition: all 0.3s ease;
   cursor: pointer;
   background-color: #fff;
+}
+
+.login-warning {
+  color: #666;
+  font-size: 1rem;
+  text-align: center;
+  margin-bottom: 20px;
+  font-family: 'Helvetica Neue', sans-serif;
+  animation: fadeIn 0.8s ease-in;
 }
 
 .profile:hover {

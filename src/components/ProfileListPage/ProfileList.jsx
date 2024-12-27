@@ -30,6 +30,7 @@ function ProfileCard(props){
 
 export default function ProfileList() {
     const [profiles, setProfiles] = useState([]);
+    const isAuthenticated = localStorage.getItem('token');
 
     const getProfiles = async () => {
       const response = await fetch (`${API_URL}/api/users`, {method: 'GET'});
@@ -54,6 +55,11 @@ export default function ProfileList() {
     return(
       <div class = "body">
           <Title CN = "ProfileList-title" content = "Find Your Friends!"/>
+          {!isAuthenticated && 
+            <p className="login-warning">
+              You must login to create your profile!
+            </p>
+          }
           <div class = "profile_list">
             {ProfileCards}
           </div>

@@ -8,7 +8,7 @@ import About from './components/AboutPage/About';
 import Create from './components/CreatePage/Create';
 import Login from './components/LoginPage/Login';
 import Register from './components/RegisterPage/Register';
-
+import Success from './components/SuccessPage/Success';
 
 // the main function
 function App() {
@@ -23,6 +23,7 @@ function App() {
           <Route path="profiles/:profileID" element={<Profile />} />
           <Route path="login" element={<Login />} />
           <Route path="register" element={<Register />} />
+          <Route path="success" element={<Success />} />
         </Route>
       </Routes>
     </BrowserRouter>

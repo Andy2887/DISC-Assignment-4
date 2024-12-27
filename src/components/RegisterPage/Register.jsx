@@ -32,7 +32,7 @@ export default function Register() {
                 throw new Error(data.error || 'Registration failed');
             }
 
-            navigate('/login');
+            navigate('/success', { state: { type: 'register' } });
         } catch (error) {
             setError(error.message);
         }
