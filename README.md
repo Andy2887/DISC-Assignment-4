@@ -41,7 +41,7 @@ A friend matchmaking platform for Northwestern students to connect with peers ba
 
 1. **Clone the repository**
 ```bash
-git clone https://github.com/Andy2887/DISC-Assignment-4.git
+git clone --branch discovery-application --single-branch https://github.com/Andy2887/DISC-Assignment-4.git
 ```
 
 2. **Install dependencies**
